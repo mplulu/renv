@@ -11,10 +11,6 @@ import (
 
 var envMode = flag.String("env", "", "env mode")
 
-func init() {
-	flag.Parse()
-}
-
 func ParseCmd(v interface{}) {
 	Parse(*envMode, v)
 }
@@ -42,7 +38,6 @@ func Parse(env string, v interface{}) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("raw", string(raw))
 	err = yaml.Unmarshal(raw, v)
 	if err != nil {
 		panic(err)
