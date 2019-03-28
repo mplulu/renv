@@ -6,12 +6,16 @@ import (
 	"io/ioutil"
 	"os"
 
-	"gopkg.in/yaml.v2"
+	yaml "gopkg.in/yaml.v2"
 )
 
-func ParseCmd(v interface{}) {
-	var envMode = flag.String("env", "", "env mode")
+var envMode = flag.String("env", "", "env mode")
+
+func init() {
 	flag.Parse()
+}
+
+func ParseCmd(v interface{}) {
 	Parse(*envMode, v)
 }
 
